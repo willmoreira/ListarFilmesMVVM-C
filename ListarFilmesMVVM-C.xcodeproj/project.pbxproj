@@ -16,6 +16,9 @@
 		7430196D2A2F58EE0062E2E3 /* ListarFilmesMVVM_CTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7430196C2A2F58EE0062E2E3 /* ListarFilmesMVVM_CTests.swift */; };
 		743019772A2F58EF0062E2E3 /* ListarFilmesMVVM_CUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743019762A2F58EF0062E2E3 /* ListarFilmesMVVM_CUITests.swift */; };
 		743019792A2F58EF0062E2E3 /* ListarFilmesMVVM_CUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743019782A2F58EF0062E2E3 /* ListarFilmesMVVM_CUITestsLaunchTests.swift */; };
+		743019862A2F59940062E2E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 743019852A2F59940062E2E3 /* GoogleService-Info.plist */; };
+		743019892A2F5B030062E2E3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 743019882A2F5B030062E2E3 /* FirebaseAuth */; };
+		7430198B2A2F5B030062E2E3 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 7430198A2A2F5B030062E2E3 /* FirebaseAuthCombine-Community */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,7 @@
 		743019722A2F58EF0062E2E3 /* ListarFilmesMVVM-CUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ListarFilmesMVVM-CUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		743019762A2F58EF0062E2E3 /* ListarFilmesMVVM_CUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListarFilmesMVVM_CUITests.swift; sourceTree = "<group>"; };
 		743019782A2F58EF0062E2E3 /* ListarFilmesMVVM_CUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListarFilmesMVVM_CUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		743019852A2F59940062E2E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				743019892A2F5B030062E2E3 /* FirebaseAuth in Frameworks */,
+				7430198B2A2F5B030062E2E3 /* FirebaseAuthCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +112,7 @@
 				7430195E2A2F58EE0062E2E3 /* Assets.xcassets */,
 				743019602A2F58EE0062E2E3 /* LaunchScreen.storyboard */,
 				743019632A2F58EE0062E2E3 /* Info.plist */,
+				743019852A2F59940062E2E3 /* GoogleService-Info.plist */,
 			);
 			path = "ListarFilmesMVVM-C";
 			sourceTree = "<group>";
@@ -143,6 +150,10 @@
 			dependencies = (
 			);
 			name = "ListarFilmesMVVM-C";
+			packageProductDependencies = (
+				743019882A2F5B030062E2E3 /* FirebaseAuth */,
+				7430198A2A2F5B030062E2E3 /* FirebaseAuthCombine-Community */,
+			);
 			productName = "ListarFilmesMVVM-C";
 			productReference = 743019522A2F58ED0062E2E3 /* ListarFilmesMVVM-C.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +226,9 @@
 				Base,
 			);
 			mainGroup = 743019492A2F58ED0062E2E3;
+			packageReferences = (
+				743019872A2F5B030062E2E3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 743019532A2F58ED0062E2E3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				743019622A2F58EE0062E2E3 /* LaunchScreen.storyboard in Resources */,
+				743019862A2F59940062E2E3 /* GoogleService-Info.plist in Resources */,
 				7430195F2A2F58EE0062E2E3 /* Assets.xcassets in Resources */,
 				7430195D2A2F58ED0062E2E3 /* Main.storyboard in Resources */,
 			);
@@ -602,6 +617,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		743019872A2F5B030062E2E3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		743019882A2F5B030062E2E3 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 743019872A2F5B030062E2E3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		7430198A2A2F5B030062E2E3 /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 743019872A2F5B030062E2E3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7430194A2A2F58ED0062E2E3 /* Project object */;
 }
