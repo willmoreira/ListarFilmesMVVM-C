@@ -8,7 +8,7 @@
 import UIKit
 
 protocol LoginCoordinatorDelegate: AnyObject {
-    func goesToListFilm()
+    func goesToListFilm(result: [Result])
     func goesToCreateFilm()
     func goesToResetFilm()
 }
@@ -33,12 +33,12 @@ class LoginCoordinator {
 extension LoginCoordinator: LoginCoordinatorDelegate {
     
     func goesToCreateFilm() {
-        let createLoginViewController = CreateLoginViewController()
-        //createLoginViewController.listFilms = self.listFilms
+        var createLoginViewController = CreateLoginViewController()
+        let createCoordinator = CreateLoginCoordinator()
+        createLoginViewController = createCoordinator.start() as! CreateLoginViewController
         let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
         navigationController.navigationItem.backBarButtonItem = backButton
         navigationController.pushViewController(createLoginViewController, animated: true)
-
     }
     
     func goesToResetFilm() {
@@ -48,13 +48,17 @@ extension LoginCoordinator: LoginCoordinatorDelegate {
         let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
         navigationController.navigationItem.backBarButtonItem = backButton
         navigationController.pushViewController(resetLoginViewController, animated: true)
-
     }
     
-    func goesToListFilm() {
-        let listFilmsViewController = FilmListViewController()
-        let backButton = UIBarButtonItem(title: "Sair do APP", style: .plain, target: nil, action: nil)
-        navigationController.navigationItem.backBarButtonItem = backButton
-        navigationController.pushViewController(listFilmsViewController, animated: true)
+    func goesToListFilm(result: [Result]) {
+        DispatchQueue.main.async {
+            var listFilmsViewController = FilmListViewController()
+            let listCoordinator = FilmListCoordinator()
+            listFilmsViewController = listCoordinator.start() as! FilmListViewController
+            listFilmsViewController.filmView.listFilms = result
+            let backButton = UIBarButtonItem(title: "Sair do APP", style: .plain, target: nil, action: nil)
+            self.navigationController.navigationItem.backBarButtonItem = backButton
+            self.navigationController.pushViewController(listFilmsViewController, animated: true)
+        }
     }
 }

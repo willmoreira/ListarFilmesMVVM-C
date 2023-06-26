@@ -29,18 +29,25 @@ class LoginViewController: UIViewController, LoginViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        activateAnimating(activate: false)
         super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        cleanTextFields()
     }
     
     func getData() {
         guard let username = loginView.inputLogin.text, !username.isEmpty else {
             showAlert(title: ProjectStrings.errorInLoginField.localized,
                       message: ProjectStrings.errorInLoginFieldMessage.localized)
+            activateAnimating(activate: false)
             return
         }
         guard let password = loginView.inputSenha.text, !password.isEmpty else {
             showAlert(title: ProjectStrings.errorInPasswordField.localized,
                       message: ProjectStrings.errorInPasswordFieldMessage.localized)
+            activateAnimating(activate: false)
             return
         }
         viewModel?.tryLogin(login: username, senha: password)
@@ -53,6 +60,7 @@ class LoginViewController: UIViewController, LoginViewDelegate {
     }
     
     func loginButtonPressed() {
+        activateAnimating(activate: true)
         getData()
     }
     
@@ -64,9 +72,12 @@ class LoginViewController: UIViewController, LoginViewDelegate {
         viewModel?.goToScreenCreateLogin()
     }
     
-    func goToScreenListFilms() {
-        cleanTextFields()
+    @objc func exitButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
+}
+
+extension LoginViewController: LoginViewActionsDelegate {
     
     func cleanTextFields() {
         DispatchQueue.main.async {
@@ -76,13 +87,6 @@ class LoginViewController: UIViewController, LoginViewDelegate {
         }
     }
     
-    @objc func exitButtonTapped() {
-        self.navigationController?.popViewController(animated: true)
-    }
-}
-
-extension LoginViewController: LoginViewActionsDelegate {
-    
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -91,10 +95,12 @@ extension LoginViewController: LoginViewActionsDelegate {
     }
     
     func activateAnimating(activate: Bool) {
-        if activate {
-            loginView.activityIndicator.startAnimating()
-        } else {
-            loginView.activityIndicator.stopAnimating()
+        DispatchQueue.main.async {
+            if activate {
+                self.loginView.activityIndicator.startAnimating()
+            } else {
+                self.loginView.activityIndicator.stopAnimating()
+            }
         }
     }
 }

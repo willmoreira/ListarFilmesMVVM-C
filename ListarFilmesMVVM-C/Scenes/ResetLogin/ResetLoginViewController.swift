@@ -35,19 +35,19 @@ class ResetLoginViewController: UIViewController, ResetLoginViewDelegate {
             viewModel?.tryReset(login: email)
         } else {
             showAlert(title: ProjectStrings.errorInLoginField.localized,
-                      message: ProjectStrings.errorInLoginFieldMessage.localized)
+                      message: ProjectStrings.errorInLoginFieldMessage.localized, result: false)
         }
-    }
-    
-    func goToLogin() {
-        self.navigationController?.popViewController(animated: true)
     }
 }
 
 extension ResetLoginViewController: ResetLoginViewActionsDelegate {
-    func showAlert(title: String, message: String) {
+    func showAlert(title: String, message: String, result: Bool) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: ProjectStrings.ok.localized, style: .default) { _ in
+            if result {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
