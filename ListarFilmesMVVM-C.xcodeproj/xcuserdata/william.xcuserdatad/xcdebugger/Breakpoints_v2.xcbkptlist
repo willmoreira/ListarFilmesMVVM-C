@@ -7,79 +7,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F56E6A90-A4CC-45A8-8F66-5CC25EBDC608"
+            uuid = "1731EFED-3723-4397-886F-BBEFB4A2CD9A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ListarFilmesMVVM-C/Scenes/Login/ViewModel/LoginViewModel.swift"
+            filePath = "ListarFilmesMVVM-C/Scenes/CreateLogin/CreateLoginViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "getListFilms()"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "tryCreateLogin(login:password:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1886BD45-F6AD-421D-9492-A8F791228BD6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ListarFilmesMVVM-C/Scenes/ResetLogin/ResetLoginViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "tryReset(login:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2816FF3A-A2EB-473B-B912-8AF6EB4C786B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ListarFilmesMVVM-C/Scenes/ResetLogin/ResetLoginViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "goToScreenListFilms()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C578772A-7942-4880-B1DF-89ECB2A9274A"
+            uuid = "166C46FF-5A47-46B3-AF7C-9039A566A951"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ListarFilmesMVVM-C/Scenes/CreateLogin/CreateLoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "tryCreateLogin()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "87FE82E7-263E-481B-832E-348F7385996E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ListarFilmesMVVM-C/Scenes/CreateLogin/CreateLoginViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "getData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -87,16 +39,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9A75FEFF-E103-4B40-B511-81AFF4488A1D"
+            uuid = "1E9BD14E-5530-4029-8010-8F529EA5B825"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ListarFilmesMVVM-C/Scenes/Login/LoginViewModel.swift"
+            filePath = "ListarFilmesMVVM-C/Scenes/ResetLogin/ResetLoginViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "tryLogin(login:senha:)"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "tryReset(login:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

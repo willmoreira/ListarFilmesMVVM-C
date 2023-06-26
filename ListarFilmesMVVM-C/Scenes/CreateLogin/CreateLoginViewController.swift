@@ -11,9 +11,7 @@ import FirebaseAuth
 class CreateLoginViewController: UIViewController, CreateLoginViewDelegate {
     
     var createLoginView = CreateLoginView()
-    var listFilms: [Result] = []
-    var login: String = ""
-    var senha: String = ""
+    var viewModel: CreateLoginViewModelDelegate?
     
     override func loadView() {
         super.loadView()
@@ -24,6 +22,7 @@ class CreateLoginViewController: UIViewController, CreateLoginViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel?.delegate = self
     }
     
     func createButtonPressed() {
@@ -31,53 +30,43 @@ class CreateLoginViewController: UIViewController, CreateLoginViewDelegate {
     }
     
     func getData() {
-        senha = createLoginView.inputSenha.text!
-        login = createLoginView.inputLogin.text!
+        let senha = createLoginView.inputSenha.text!
+        let login = createLoginView.inputLogin.text!
         
         if !login.isEmpty {
             if !senha.isEmpty {
-                createLoginView.activityIndicator.startAnimating()
-                tryCreateLogin(login: login, senha: senha)
+                activateAnimating(activate: true)
+                viewModel?.tryCreateLogin(login: login, password: senha)
             } else {
-                showAlert(title: "Erro no campo Senha", message: "Preencha o campo Senha")
+                showAlert(title: ProjectStrings.errorInPasswordField.localized,
+                          message: ProjectStrings.errorInPasswordFieldMessage.localized,
+                          result: false)
             }
         } else {
-            showAlert(title: "Erro no campo Login", message: "Preencha o campo Login")
+            showAlert(title: ProjectStrings.errorInLoginField.localized,
+                      message: ProjectStrings.errorInLoginFieldMessage.localized,
+                      result: false)
         }
     }
-    
-    func tryCreateLogin(login: String, senha: String) {
-        Auth.auth().createUser(withEmail: login, password: senha) { authResult, error in
-            self.createLoginView.activityIndicator.stopAnimating()
-            
-            if let error = error {
-                if error.localizedDescription == "The email address is already in use by another account." {
-                    self.showAlert(title: "Email já em uso!", message: "O endereço de e-mail já está sendo usado por outra conta.")
-                }
-                if error.localizedDescription == "The email address is badly formatted." {
-                    self.showAlert(title: "Formato do email incorreto!", message: "O endereço de e-mail não parece ser valido")
-                }
-                if error.localizedDescription == "The password must be 6 characters long or more." {
-                    self.showAlert(title: "Regra de senha", message: "A senha deve ter 6 caracteres ou mais.")
-                }
-                return
-            }
-            self.showAlert(title: "Sucesso!", message: "Usuario cadastrado com sucesso, faça o Login agora!")
-        }
-    }
-    
-    func showAlert(title: String, message: String) {
+}
+
+extension CreateLoginViewController: CreateLoginViewActionsDelegate {
+    func showAlert(title: String, message: String, result: Bool) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { action in
-            if title == "Sucesso!" {
-                self.goToLogin()
+        let okAction = UIAlertAction(title: ProjectStrings.ok.localized, style: .default) { _ in
+            if result {
+                self.navigationController?.popViewController(animated: true)
             }
         }
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
     
-    func goToLogin() {
-        self.navigationController?.popViewController(animated: true)
+    func activateAnimating(activate: Bool) {
+        if activate {
+            createLoginView.activityIndicator.startAnimating()
+        } else {
+            createLoginView.activityIndicator.stopAnimating()
+        }
     }
 }

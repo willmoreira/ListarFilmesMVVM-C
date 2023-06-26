@@ -7,33 +7,22 @@
 
 import UIKit
 
-class FilmListViewController: UIViewController {
+class FilmListViewController: UIViewController, FilmListViewDelegate {
    
     var filmView = FilmListView()
-    var film: Result = Result(adult: false,
-                              backdropPath: "",
-                              genreIDS: [0],
-                              id: 0,
-                              originalLanguage: "",
-                              originalTitle: "",
-                              overview: "",
-                              popularity: 0.0,
-                              posterPath: "",
-                              releaseDate: "",
-                              title: "",
-                              video: false,
-                              voteAverage: 0.0,
-                              voteCount: 0)
+    var films: [Result] = []
+    var viewModel: FilmListViewModelDelegate?
 
     override func loadView() {
         super.loadView()
         view = filmView
+        view.backgroundColor = .white
         filmView.delegate = self
-        view.backgroundColor = .orange
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel?.delegate = self
     }
 //
 //    func goToDetailViewController(filmSelected: Result) {
@@ -46,7 +35,7 @@ class FilmListViewController: UIViewController {
    
 }
 
-extension FilmListViewController: FilmListViewDelegate {
+extension FilmListViewController: FilmListViewActionsDelegate {
     func goToDetailViewController(_ index: Int) {
         
     }
