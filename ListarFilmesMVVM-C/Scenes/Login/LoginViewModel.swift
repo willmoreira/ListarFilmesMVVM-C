@@ -56,8 +56,13 @@ class LoginViewModel: LoginViewModelDelegate {
     func searchFilmList() {
         self.delegate?.activateAnimating(activate: false)
         // Defina a URL da API e a chave de API
-        let apiKey = "ac894a60b6f5b4abf7ff6c58dbc67ced"
-        let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)"
+        guard let configPath = Bundle.main.path(forResource: "Config", ofType: "plist"),
+              let configDictionary = NSDictionary(contentsOfFile: configPath),
+              let apiKey = configDictionary["API_KEY"] as? String else {
+            fatalError("Arquivo de configuração 'Config.plist' não encontrado ou chave 'API_KEY' ausente.")
+        }
+        
+        let urlString = ProjectStrings.urlString.localized + apiKey
         
         // Crie uma instância de URLSession
         let session = URLSession.shared
