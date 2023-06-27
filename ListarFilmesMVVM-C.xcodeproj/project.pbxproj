@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D40DA782A4B56420001BE26 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D40DA772A4B56420001BE26 /* Config.plist */; };
 		3D4D8B832A408D3F00274256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4D8B822A408D3F00274256 /* Main.storyboard */; };
 		3D4D8B852A408D7600274256 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4D8B842A408D7600274256 /* LaunchScreen.storyboard */; };
 		3D4D8B862A408F0600274256 /* Localizable.strings in Sources */ = {isa = PBXBuildFile; fileRef = 3D4D8B882A408F0600274256 /* Localizable.strings */; };
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D40DA772A4B56420001BE26 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		3D4D8B822A408D3F00274256 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3D4D8B842A408D7600274256 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D4D8B872A408F0600274256 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			children = (
 				3D66B93D2A3B5C4400DA4FC1 /* GoogleService-Info.plist */,
 				743019632A2F58EE0062E2E3 /* Info.plist */,
+				3D40DA772A4B56420001BE26 /* Config.plist */,
 				3D4D8B842A408D7600274256 /* LaunchScreen.storyboard */,
 				3D4D8B822A408D3F00274256 /* Main.storyboard */,
 				743019552A2F58ED0062E2E3 /* AppDelegate.swift */,
@@ -428,6 +431,7 @@
 				3D4D8B832A408D3F00274256 /* Main.storyboard in Resources */,
 				3D4D8B852A408D7600274256 /* LaunchScreen.storyboard in Resources */,
 				3D66B93E2A3B5C4400DA4FC1 /* GoogleService-Info.plist in Resources */,
+				3D40DA782A4B56420001BE26 /* Config.plist in Resources */,
 				7430195F2A2F58EE0062E2E3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
