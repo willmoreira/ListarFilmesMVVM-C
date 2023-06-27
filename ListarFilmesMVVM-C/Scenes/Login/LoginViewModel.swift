@@ -85,9 +85,11 @@ class LoginViewModel: LoginViewModelDelegate {
             do {
                 let decoder = JSONDecoder()
                 let result = try decoder.decode(FilmModel.self, from: data)
-                self.listFilms = result.results
-                self.getListFilms()
-            
+                
+                DispatchQueue.main.async {
+                    self.listFilms = result.results
+                    self.getListFilms()
+                }
             } catch {
                 print("Erro ao converter dados em JSON: \(error.localizedDescription)")
             }

@@ -9,6 +9,7 @@ import UIKit
 
 class FilmListViewController: UIViewController, FilmListViewDelegate {
    
+   
     var filmView = FilmListView()
     var films: [Result] = []
     var viewModel: FilmListViewModelDelegate?
@@ -24,19 +25,14 @@ class FilmListViewController: UIViewController, FilmListViewDelegate {
         super.viewDidLoad()
         viewModel?.delegate = self
     }
-//
-//    func goToDetailViewController(filmSelected: Result) {
-//        let detailVC = DetailFilmViewController()
-//        detailVC.film = filmSelected
-//        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
-//        navigationItem.backBarButtonItem = backButton
-//        navigationController?.pushViewController(detailVC, animated: true)
-//    }
-   
+
+    func goToDetailViewController(_ index: Int) {
+        viewModel?.goesToDetailFilm(result: filmView.listFilms[index])
+    }
 }
 
 extension FilmListViewController: FilmListViewActionsDelegate {
-    func goToDetailViewController(_ index: Int) {
+    func goToDetailViewController(_ index: Int, filmSelected: Result) {
         
     }
 }
