@@ -12,8 +12,8 @@ class LoginViewController: UIViewController, LoginViewDelegate {
     
     var loginView = LoginView()
     var listFilms: [Result] = []
-    var login: String = ""
-    var senha: String = ""
+    var login: String = ProjectStrings.stringEmpty.localized
+    var senha: String = ProjectStrings.stringEmpty.localized
     var viewModel: LoginViewModelDelegate?
     
     override func loadView() {
@@ -89,7 +89,7 @@ extension LoginViewController: LoginViewActionsDelegate {
     
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: ProjectStrings.ok.localized, style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }

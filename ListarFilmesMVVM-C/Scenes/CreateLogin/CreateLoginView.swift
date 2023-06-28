@@ -14,7 +14,6 @@ protocol CreateLoginViewDelegate where Self: UIViewController {
 class CreateLoginView: UIView {
     weak var delegate: CreateLoginViewDelegate?
     var viewController: CreateLoginViewController?
-    var alertViewController = UIAlertController()
     
     lazy var activityIndicator = UIActivityIndicatorView(style: .large)
     
@@ -58,30 +57,7 @@ class CreateLoginView: UIView {
         super.init(coder: coder)
     }
     
-    func startAnimating() {
-        activityIndicator.startAnimating()
-    }
-    
-    func stopAnimating() {
-        activityIndicator.stopAnimating()
-    }
-    
-    func showAlert(title: String, message: String, completion: (() -> Void)?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            completion?()
-        }
-        alertController.addAction(okAction)
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
     private func setupInit() {
-        self.alertViewController.message = ProjectStrings.stringEmpty.localized
-        self.alertViewController.title = ProjectStrings.stringEmpty.localized
-
         self.titleView.text = ProjectStrings.registerLogin.localized
         self.titleLoginLabel.text = ProjectStrings.email.localized
         self.inputLogin = inputLogin
