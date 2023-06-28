@@ -55,7 +55,6 @@ class LoginService {
             do {
                 let decoder = JSONDecoder()
                 let filmModel = try decoder.decode(FilmModel.self, from: data)
-                
                 DispatchQueue.main.async {
                     completion(filmModel.results)
                 }

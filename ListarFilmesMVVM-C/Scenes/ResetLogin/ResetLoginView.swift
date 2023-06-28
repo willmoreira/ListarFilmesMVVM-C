@@ -46,26 +46,6 @@ class ResetLoginView: UIView {
         super.init(coder: coder)
     }
     
-    func startAnimating() {
-        activityIndicator.startAnimating()
-    }
-    
-    func stopAnimating() {
-        activityIndicator.stopAnimating()
-    }
-    
-    func showAlert(title: String, message: String, completion: (() -> Void)?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: ProjectStrings.ok.localized, style: .default) { _ in
-            completion?()
-        }
-        alertController.addAction(okAction)
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
     private func setupInit() {
         self.titleView.text = ProjectStrings.recoveryPassword2.localized
         self.titleLoginLabel.text = ProjectStrings.email.localized
