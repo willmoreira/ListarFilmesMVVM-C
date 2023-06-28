@@ -21,31 +21,31 @@ protocol ResetViewModelDelegate: AnyObject {
 class ResetLoginViewModel: ResetViewModelDelegate {
     
     weak var delegate: ResetLoginViewActionsDelegate?
-    var resetLoginService: ResetLoginService?
-   
+    let resetLoginService = ResetLoginService()
+    
     func tryReset(login: String) {
         
         self.delegate?.activateAnimating(activate: true)
         
-        Auth.auth().sendPasswordReset(withEmail: login) { error in
+        resetLoginService.sendPasswordReset(withEmail: login) { [weak self] error in
+            self?.delegate?.activateAnimating(activate: false)
             
-            self.delegate?.activateAnimating(activate: false)
-            
-            if let error = error as? NSError{
+            if let error = error as NSError? {
                 if error.code == 17011 {
-                    self.delegate?.showAlert(title: ProjectStrings.userNotFound.localized,
-                              message: ProjectStrings.userNotFoundMessage2.localized, result: false)
-                    
+                    self?.delegate?.showAlert(title: ProjectStrings.userNotFound.localized,
+                                              message: ProjectStrings.userNotFoundMessage2.localized,
+                                              result: false)
                 }
                 if error.code == 17008 {
-                    self.delegate?.showAlert(title: ProjectStrings.incorrectEmailFormat.localized,
-                              message: ProjectStrings.incorrectEmailFormatMessage.localized, result: false)
-                    
+                    self?.delegate?.showAlert(title: ProjectStrings.incorrectEmailFormat.localized,
+                                              message: ProjectStrings.incorrectEmailFormatMessage.localized,
+                                              result: false)
                 }
                 return
             }
-            self.delegate?.showAlert(title: ProjectStrings.success.localized,
-                      message: ProjectStrings.guidelinesHaveBeenSentToYourEmail.localized, result: true)
+            self?.delegate?.showAlert(title: ProjectStrings.success.localized,
+                                      message: ProjectStrings.guidelinesHaveBeenSentToYourEmail.localized,
+                                      result: true)
         }
     }
 }

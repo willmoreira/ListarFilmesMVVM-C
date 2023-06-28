@@ -16,7 +16,6 @@ protocol FilmListViewModelDelegate: AnyObject {
     func goesToDetailFilm(result: Result) 
 }
 
-
 class FilmListViewModel: FilmListViewModelDelegate {
     
     weak var delegate: FilmListViewActionsDelegate?

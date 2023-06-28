@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 protocol FilmListCoordinatorDelegate: AnyObject {
     func goesToDetailFilm(result: Result)
 }

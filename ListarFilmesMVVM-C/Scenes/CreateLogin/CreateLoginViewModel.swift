@@ -20,24 +20,32 @@ protocol CreateLoginViewModelDelegate: AnyObject {
 
 class CreateLoginViewModel: CreateLoginViewModelDelegate {
     weak var delegate: CreateLoginViewActionsDelegate?
+    let createLoginService = CreateLoginService()
 
     func tryCreateLogin(login: String, password: String) {
-        Auth.auth().createUser(withEmail: login, password: password) { authResult, error in
-            self.delegate?.activateAnimating(activate: false)
-            if let error = error {
-                if error.localizedDescription == "The email address is already in use by another account." {
-                    self.delegate?.showAlert(title: "Email já em uso!", message: "O endereço de e-mail já está sendo usado por outra conta.", result: false)
+        createLoginService.createUser(withEmail: login, password: password) { _, error in
+            self.delegate?.activateAnimating(activate: true)
+            if let error = error as NSError? {
+                if error.code == 17007 {
+                    self.delegate?.showAlert(title: ProjectStrings.emailAlreadyInUse.localized,
+                                             message: ProjectStrings.emailAlreadyInUseMessage.localized,
+                                             result: false)
                 }
-                if error.localizedDescription == "The email address is badly formatted." {
-                    self.delegate?.showAlert(title: "Formato do email incorreto!", message: "O endereço de e-mail não parece ser valido", result: false)
+                if error.code == 17008 {
+                    self.delegate?.showAlert(title: ProjectStrings.incorrectEmailFormat.localized,
+                                             message: ProjectStrings.incorrectEmailFormatMessage.localized,
+                                             result: false)
                 }
-                if error.localizedDescription == "The password must be 6 characters long or more." {
-                    self.delegate?.showAlert(title: "Regra de senha", message: "A senha deve ter 6 caracteres ou mais.", result: false)
+                if error.code == 17026 {
+                    self.delegate?.showAlert(title: ProjectStrings.passwordRule.localized,
+                                             message: ProjectStrings.passwordRuleMessage.localized,
+                                             result: false)
                 }
+                self.delegate?.activateAnimating(activate: false)
                 return
             }
-            self.delegate?.showAlert(title: "Sucesso!",
-                               message: "Usuario cadastrado com sucesso, faça o Login agora!",
+            self.delegate?.showAlert(title: ProjectStrings.success.localized,
+                               message: ProjectStrings.userSuccessfullyCreatedMessage.localized,
                                result: true)
         }
     }

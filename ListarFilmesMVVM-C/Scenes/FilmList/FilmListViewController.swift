@@ -9,7 +9,6 @@ import UIKit
 
 class FilmListViewController: UIViewController, FilmListViewDelegate {
    
-   
     var filmView = FilmListView()
     var films: [Result] = []
     var viewModel: FilmListViewModelDelegate?
