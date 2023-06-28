@@ -5,4 +5,8 @@
 //  Created by William on 19/06/23.
 //
 
-import Foundation
+import UIKit
+
+class FilmDetailService {
+    
+}

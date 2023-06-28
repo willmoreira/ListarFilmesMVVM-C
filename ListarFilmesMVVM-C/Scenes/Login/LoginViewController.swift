@@ -50,7 +50,7 @@ class LoginViewController: UIViewController, LoginViewDelegate {
             activateAnimating(activate: false)
             return
         }
-        viewModel?.tryLogin(login: username, senha: password)
+        viewModel?.signIn(withEmail: username, password: password)
     }
    
     func dismissKeyboard() {
